@@ -10,6 +10,7 @@ import java.io.StringWriter;
 import java.net.InetSocketAddress;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
 import java.security.KeyStore;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -378,8 +379,8 @@ public class MockHttpServer implements TestRule {
             byte[] sampleTruststore1 = Base64.decode(TEST_TS1);
             byte[] sampleKeystore1 = Base64.decode(TEST_KS1);
 
-            keystore = File.createTempFile("SecureAcceptAllGetTest", ".keystore");
-            truststore = File.createTempFile("SecureAcceptAllGetTest", ".truststore");
+            keystore = Files.createTempFile("SecureAcceptAllGetTest", ".keystore").toFile();
+            truststore = Files.createTempFile("SecureAcceptAllGetTest", ".truststore").toFile();
 
             FileOutputStream keystoreFileOut = new FileOutputStream(keystore);
             try {

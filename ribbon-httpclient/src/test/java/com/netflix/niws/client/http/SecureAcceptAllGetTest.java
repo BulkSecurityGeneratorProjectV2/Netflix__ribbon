@@ -33,6 +33,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 import java.net.URI;
+import java.nio.file.Files;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
@@ -65,8 +66,8 @@ public class SecureAcceptAllGetTest {
         byte[] sampleTruststore1 = Base64.decode(SecureGetTest.TEST_TS1);
         byte[] sampleKeystore1 = Base64.decode(SecureGetTest.TEST_KS1);
 
-        TEST_FILE_KS = File.createTempFile("SecureAcceptAllGetTest", ".keystore");
-        TEST_FILE_TS = File.createTempFile("SecureAcceptAllGetTest", ".truststore");
+        TEST_FILE_KS = Files.createTempFile("SecureAcceptAllGetTest", ".keystore").toFile();
+        TEST_FILE_TS = Files.createTempFile("SecureAcceptAllGetTest", ".truststore").toFile();
 
         FileOutputStream keystoreFileOut = new FileOutputStream(TEST_FILE_KS);
         try {

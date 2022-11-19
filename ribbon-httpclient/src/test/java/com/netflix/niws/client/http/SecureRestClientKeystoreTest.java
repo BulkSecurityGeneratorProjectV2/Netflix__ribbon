@@ -21,6 +21,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.nio.file.Files;
 import java.security.KeyStore;
 import java.security.cert.Certificate;
 
@@ -48,8 +49,8 @@ public class SecureRestClientKeystoreTest {
 		byte[] dummyTruststore = Base64.decode(SecureGetTest.TEST_TS1);
 		byte[] dummyKeystore = Base64.decode(SecureGetTest.TEST_KS1);
 
-		File tempKeystore = File.createTempFile(this.getClass().getName(), ".keystore");
-		File tempTruststore = File.createTempFile(this.getClass().getName(), ".truststore");
+		File tempKeystore = Files.createTempFile(this.getClass().getName(), ".keystore").toFile();
+		File tempTruststore = Files.createTempFile(this.getClass().getName(), ".truststore").toFile();
 
 		FileOutputStream keystoreFileOut = new FileOutputStream(tempKeystore);
         try {
@@ -95,8 +96,8 @@ public class SecureRestClientKeystoreTest {
 		byte[] dummyTruststore = Base64.decode(SecureGetTest.TEST_TS1);
 		byte[] dummyKeystore = Base64.decode(SecureGetTest.TEST_KS1);
 
-		File tempKeystore = File.createTempFile(this.getClass().getName(), ".keystore");
-		File tempTruststore = File.createTempFile(this.getClass().getName(), ".truststore");
+		File tempKeystore = Files.createTempFile(this.getClass().getName(), ".keystore").toFile();
+		File tempTruststore = Files.createTempFile(this.getClass().getName(), ".truststore").toFile();
 
 		FileOutputStream keystoreFileOut = new FileOutputStream(tempKeystore);
         try {

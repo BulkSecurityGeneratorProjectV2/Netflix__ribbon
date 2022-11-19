@@ -24,6 +24,7 @@ import static org.junit.Assert.fail;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.net.URI;
+import java.nio.file.Files;
 
 import org.apache.commons.configuration.AbstractConfiguration;
 import org.junit.AfterClass;
@@ -265,8 +266,8 @@ public class SecureGetTest {
 		byte[] sampleTruststore1 = Base64.decode(TEST_TS1);
 		byte[] sampleKeystore1 = Base64.decode(TEST_KS1);
 
-		FILE_KS1 = File.createTempFile("SecureGetTest1", ".keystore");
-		FILE_TS1 = File.createTempFile("SecureGetTest1", ".truststore");
+		FILE_KS1 = Files.createTempFile("SecureGetTest1", ".keystore").toFile();
+		FILE_TS1 = Files.createTempFile("SecureGetTest1", ".truststore").toFile();
 
 		FileOutputStream keystoreFileOut = new FileOutputStream(FILE_KS1);
         try {
@@ -297,8 +298,8 @@ public class SecureGetTest {
 		byte[] sampleTruststore2 = Base64.decode(TEST_TS2);
 		byte[] sampleKeystore2 = Base64.decode(TEST_KS2);
 
-		FILE_KS2 = File.createTempFile("SecureGetTest2", ".keystore");
-		FILE_TS2 = File.createTempFile("SecureGetTest2", ".truststore");
+		FILE_KS2 = Files.createTempFile("SecureGetTest2", ".keystore").toFile();
+		FILE_TS2 = Files.createTempFile("SecureGetTest2", ".truststore").toFile();
 
 		keystoreFileOut = new FileOutputStream(FILE_KS2);
         try {
